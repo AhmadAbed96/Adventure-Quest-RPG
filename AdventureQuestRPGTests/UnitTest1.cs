@@ -1,7 +1,7 @@
 using Adventure_Quest_RPG;
 namespace AdventureQuestRPGTests
 {
-    public class UnitTest1
+    public class Adventure_QuestRPGTests
     {
         [Fact]
         public void playerAttack()
