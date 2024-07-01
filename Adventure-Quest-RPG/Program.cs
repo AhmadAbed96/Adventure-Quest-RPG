@@ -4,7 +4,15 @@
     {
         static void Main(string[] args)
         {
-           
+            Console.WriteLine("Welcome to the RPG world!");
+            Console.WriteLine("player vs monster");
+            Console.WriteLine("fight");
+            Console.WriteLine();
+            Character character = new Character();
+            Player player = new Player();
+            Monster monster = new Invoker();
+            BattleSystem battleSystem = new BattleSystem();
+            battleSystem.StartBattle(player, monster);
 
         }
     }
