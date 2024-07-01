@@ -11,14 +11,16 @@ public class BattleSystem
             Attack(player, monster);
             if (monster.Health <= 0)
             {
+                Console.WriteLine("");
                 Console.WriteLine($"{player.Name} wins");
                 return player.Name;
             }
-
+            Console.WriteLine("");
             Console.WriteLine($"It's {monster.Name} turn");
             Attack(monster, player);
             if (player.Health <= 0)
             {
+                Console.WriteLine("");
                 Console.WriteLine($"{player.Name} lost");
                 return monster.Name;
             }
@@ -41,7 +43,7 @@ public class BattleSystem
         }
         Console.WriteLine($"{attack.Name} attacks {target.Name}");
         Console.WriteLine($"The damage is {Damage}");
-        Console.WriteLine($"The health is {target.Health}");
+        Console.WriteLine($"The {target.Name} health is {target.Health}");
         return Damage;
     }
 }

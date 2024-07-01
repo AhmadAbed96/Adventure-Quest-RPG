@@ -7,7 +7,6 @@
             Console.WriteLine("Welcome to the RPG world!");
             Console.WriteLine("player vs monster");
             Console.WriteLine("fight");
-            Console.WriteLine();
             Characters character = new Characters();
             Player player = new Player();
             Monster monster = new Invoker();
