@@ -6,7 +6,7 @@ public class BattleSystem
     {
         while (player.Health > 0 && monster.Health > 0)
         {
-            Console.WriteLine();
+            Console.WriteLine("");
             Console.WriteLine($"It's {player.Name} turn");
             Attack(player, monster);
             if (monster.Health <= 0)
