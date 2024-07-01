@@ -2,7 +2,7 @@
 
 public class BattleSystem
 {
-    public string StartBattle(Character player, Character monster)
+    public string StartBattle(Characters player, Characters monster)
     {
         while (player.Health > 0 && monster.Health > 0)
         {
@@ -25,7 +25,7 @@ public class BattleSystem
         }
         return "";
     }
-    public int Attack(Character attack, Character target)
+    public int Attack(Characters attack, Characters target)
     {
         int Damage = attack.AttackPower - target.Defense;
         if (Damage < 0)

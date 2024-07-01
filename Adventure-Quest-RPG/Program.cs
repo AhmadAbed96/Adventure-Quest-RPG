@@ -8,7 +8,7 @@
             Console.WriteLine("player vs monster");
             Console.WriteLine("fight");
             Console.WriteLine();
-            Character character = new Character();
+            Characters character = new Characters();
             Player player = new Player();
             Monster monster = new Invoker();
             BattleSystem battleSystem = new BattleSystem();
