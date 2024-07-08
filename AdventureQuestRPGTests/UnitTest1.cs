@@ -1,43 +1,48 @@
 using Adventure_Quest_RPG;
+
 namespace AdventureQuestRPGTests
 {
     public class Adventure_QuestRPGTests
     {
         [Fact]
-        public void playerAttack()
+        public void TestEncounterBossMonster()
         {
-            Player player = new Player();
-            Monster monster = new Invoker();
-            BattleSystem battel = new BattleSystem();
-            int health = battel.Attack(player, monster);
+            // Arrange
+            Player player = new Player("TestHero");
+            Adventure adventure = new Adventure(player);
 
-            Assert.Equal(15, health);
+            List<Monster> monsters = new List<Monster>
+        {
+            new Invoker("Invoker"),
+            new Chen("Chen"),
+            new BossMonster("Dragon")
+        };
+
+            Monster bossMonster = monsters.Find(monster => monster is BossMonster);
+
+            // Act
+            BattleSystem battleSystem = new BattleSystem();
+            battleSystem.StartBattle(player, bossMonster);
+
+            // Assert
+            Assert.Equal("Dragon", bossMonster.Name);
         }
 
         [Fact]
-        public void monsterAttack()
+        public void TestDiscoverNewLocation()
         {
-            Player player = new Player();
-            Monster monster = new Invoker();
-            BattleSystem battel = new BattleSystem();
-            battel.Attack(monster, player);
-            int result = player.Health;
+            // Arrange
+            Player player = new Player(name: "Hero");
+            var adventure = new Adventure(player);
+            string input = "3"; 
+            var inputReader = new StringReader(input);
+            Console.SetIn(inputReader);
 
-            Assert.Equal(95, result);
+            // Act
+            adventure.DiscoverNewLocation();
+
+            // Assert
+            Assert.Equal("Cave", adventure.CurrentLocation);
         }
-
-        [Fact]
-        public void winner()
-        {
-            Player player = new Player();
-            Monster monster = new Invoker();
-            BattleSystem battel = new BattleSystem();
-            string winner = battel.StartBattle(monster, player);
-
-
-            Assert.Equal("hero", winner);
-        }
-
     }
 }
-

@@ -1,17 +1,20 @@
-﻿namespace Adventure_Quest_RPG
+﻿using System.Linq.Expressions;
+
+namespace Adventure_Quest_RPG
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the RPG world!");
-            Console.WriteLine("player vs monster");
-            Console.WriteLine("fight");
-            Characters character = new Characters();
-            Player player = new Player();
-            Monster monster = new Invoker();
-            BattleSystem battleSystem = new BattleSystem();
-            battleSystem.StartBattle(player, monster);
+            
+                Player player = new Player(name: "Hero");
+                Adventure adventure = new Adventure(player);
+                adventure.Start();
+
+                Console.WriteLine("Adventure complete!");
+
+            
+           
 
         }
     }

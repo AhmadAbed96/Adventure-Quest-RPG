@@ -6,37 +6,84 @@ using System.Threading.Tasks;
 
 namespace Adventure_Quest_RPG
 {
-    public class Characters
+    public class Characters : IBattleStates
     {
         public string Name { get; set; }
         public int Health { get; set; }
         public int AttackPower { get; set; }
         public int Defense { get; set; }
     }
-        public class Player : Characters
+
+    public class Player : Characters
         {
-        public Player()
+        public Inventory Inventory { get; set; }
+
+        public Player(string name, int health = 100, int attackPower = 20, int defense = 10)
         {
             Name = "hero";
-            Health = 100;
-            AttackPower = 30;
-            Defense = 15;
+            Health = health;
+            AttackPower = attackPower;
+            Defense = defense;
+            Inventory = new Inventory();
+        }
+
+
+        public void UseItem(string itemName)
+        {
+            Inventory.UseItem(this, itemName);
+        }
+
+    }
+
+    public abstract class Monster : IBattleStates
+    {
+        public string Name { get; set; }
+        public int Health { get; set; }
+        public int AttackPower { get; set; }
+        public int Defense { get; set; }
+
+        public Monster(string name, int health, int attackPower, int defense)
+        {
+            Name = name;
+            Health = health;
+            AttackPower = attackPower;
+            Defense = defense;
+        }
+
+        public abstract void Attack(Player player);
+    }
+
+    public class BossMonster : Monster
+    {
+        public BossMonster(string name, int health = 200, int attackPower = 40, int defense = 20)
+            : base(name, health, attackPower, defense) { }
+
+        public override void Attack(Player player)
+        {
+
         }
     }
-        public abstract class Monster : Characters
+
+    public class Invoker : Monster
+    {
+        public Invoker(string name, int health = 50, int attackPower = 15, int defense = 15)
+            : base(name, health, attackPower, defense) { }
+
+        public override void Attack(Player player)
         {
-        public Monster() 
+
+        }
+    }
+    public class Chen : Monster
+    {
+        public Chen(string name, int health = 40, int attackPower = 15, int defense = 10)
+            : base(name, health, attackPower, defense) { }
+
+        public override void Attack(Player player)
         {
-            Name = "Invoker";
-            Health = 100;
-            AttackPower = 20;
-            Defense = 15;
+
         }
-        }
-        
-        public class Invoker : Monster
-        {
-            
-        }
-    
+    }
+
+
 }
